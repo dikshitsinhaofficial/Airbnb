@@ -2,7 +2,8 @@ import os
 
 from datetime import timedelta
 from pathlib import Path
-from  dotenv import  load_dotenv
+from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -95,6 +96,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,14 +131,10 @@ WSGI_APPLICATION = 'airbnb_backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        'NAME': os.environ.get("SQL_DB", BASE_DIR / 'db.sqlite3'),
-        'USER': os.environ.get("SQL_USER", ""),
-        'PASSWORD': os.environ.get("SQL_PASSWORD", ""),
-        'HOST': os.environ.get("SQL_HOST", ""),
-        'PORT': os.environ.get("SQL_PORT", ""),
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get("SQL_ENGINE", "sqlite:///" + str(BASE_DIR / "db.sqlite3")),
+        conn_max_age=600,
+    )
 }
 
 # Password validation
@@ -174,8 +172,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
