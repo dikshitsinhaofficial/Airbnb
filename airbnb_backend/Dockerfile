@@ -25,3 +25,5 @@ COPY . .
 
 ENTRYPOINT ["/usr/src/airbnb_backend/entrypoint.sh"]
 
+# Start Gunicorn, binding to the PORT environment variable provided by Render (or 10000 by default)
+CMD ["sh", "-c", "gunicorn airbnb_backend.wsgi:application --bind 0.0.0.0:${PORT:-10000}"]
