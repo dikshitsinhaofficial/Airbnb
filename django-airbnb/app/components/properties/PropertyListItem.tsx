@@ -5,7 +5,7 @@ interface PropertiesProps {
     properties: PropertiesType
 }
 
-const PropertyListItem: React.FC<PropertyProps> = ({
+const PropertyListItem: React.FC<PropertiesProps> = ({
     properties
 }) => {
     return(
