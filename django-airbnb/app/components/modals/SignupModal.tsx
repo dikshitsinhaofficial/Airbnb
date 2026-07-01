@@ -12,18 +12,12 @@ const SignupModal = () => {
     const content = (
         <>
             <form className="space-y-4">
-                <input Placeholder="Enter your e-mail address" type="email" className="w-full h-[54px] px-4 border-gray-100 rounded-xl" />
-                <input Placeholder="Enter new password" type="password" className="w-full h-[54px] px-4 border-gray-100 rounded-xl" />
-                <input Placeholder="Confrim password" type="password" className="w-full h-[54px] px-4 border-gray-100 rounded-xl" />
-
-                
-                <div className="p-5 bg-airbnb text-white rounded-xl opacity-80">
-                    Sign up Error
-                </div>
+                <input placeholder="Enter your e-mail address" type="email" className="w-full h-[54px] px-4 border border-gray-200 rounded-xl" />
+                <input placeholder="Enter new password" type="password" className="w-full h-[54px] px-4 border border-gray-200 rounded-xl" />
+                <input placeholder="Confirm password" type="password" className="w-full h-[54px] px-4 border border-gray-200 rounded-xl" />
                 <CustomButton 
                     label="Sign up"
                 />
-                
             </form>
         </>
     )

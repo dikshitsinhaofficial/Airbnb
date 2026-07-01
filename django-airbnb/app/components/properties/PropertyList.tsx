@@ -13,7 +13,7 @@ export type PropertiesType = {
 const PropertyList = () => {
     const [properties, setProperties] = useState<PropertiesType[]>([]);
     const getProperties = async () => {
-        const url = "http://localhost:8000/api/properties/";
+        const url = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/properties/`;
 
         await fetch(url, {
             method: 'GET',
