@@ -8,8 +8,7 @@ const LandlordDetailPage = () => { return (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <aside className="col-span-1 mb-4">
                     <div className="flex flex-col items-center p-6 rounded-xl border border-gray-300 shadow-xl">
-                        <img
-                            fill
+                        <Image
                             src="/profile.png"
                             width={200}
                             height={200}
