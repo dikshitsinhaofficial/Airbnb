@@ -5,7 +5,7 @@ interface ModalProps {
     label: string;
     close: () => void;
     content: React.ReactElement;
-    isopen: boolean;
+    isOpen: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -50,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({
                                 </svg>
                             </div>
 
-                            <h2 className="" text-lg font-bold>{label}</h2>
+                            <h2 className="text-lg font-bold">{label}</h2>
                         </header>
 
                         <section className="p-6">
